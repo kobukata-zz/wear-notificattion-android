@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schems.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".MyActivity">
+		
+		<ScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
+
+				<Button
+						android:text="action notification"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" 
+						android:onClick="showActionNotification"/>
+
+				<Button
+						android:text="inbox notification"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" 
+						android:onClick="showInboxNotification"/>
+
+				<Button
+						android:text="custom notification"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" 
+						android:onClick="showCustumTextNoti"/>
+
+				<Button
+						android:text="Group Notification 1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" 
+						android:onClick="showGroup1"/>
+
+				<Button
+						android:text="Group Notification 2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" 
+						android:onClick="showGroup2"/>
+
+				<Button
+						android:text="Group Notification 3"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" 
+						android:onClick="showGroup3"/>
+
+				<Button
+						android:text="summary notification"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" 
+						android:onClick="showSummaryNoti"/>
+
+				<Button
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:onClick="showPageNotification"
+						android:text="page notification" />
+				
+				<Button
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:onClick="showBackgroundNotification"
+						android:text="background notification" />
+	
+				<Button
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:onClick="showContentActionNotification"
+						android:text="Content Action notification" />
+				
+			</LinearLayout>
+		
+		</ScrollView>
+
+</RelativeLayout>
