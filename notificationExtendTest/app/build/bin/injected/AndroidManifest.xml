@@ -31,6 +31,19 @@
 
 		</activity>
 
+		<activity
+			android:name=".ReceiveActivity"
+			android:label="@string/title_activity_receive">
+
+		</activity>
+
+		<receiver
+			android:name=".MainReceiver"
+			android:enabled="true"
+			android:exported="true">
+
+		</receiver>
+
 	</application>
 
 </manifest>

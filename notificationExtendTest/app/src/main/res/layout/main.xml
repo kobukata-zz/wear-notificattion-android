@@ -8,72 +8,74 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
 
-		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="vertical">
-
+			<TableLayout
+					xmlns:android="http://schemas.android.com/apk/res/android"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+						
+			<TableRow>
 				<Button
 						android:text="action notification"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" 
 						android:onClick="showActionNotification"/>
-
 				<Button
 						android:text="inbox notification"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" 
 						android:onClick="showInboxNotification"/>
-
+			</TableRow>
+			<TableRow>
 				<Button
 						android:text="custom notification"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" 
 						android:onClick="showCustumTextNoti"/>
-
 				<Button
 						android:text="Group Notification 1"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" 
 						android:onClick="showGroup1"/>
-
+			</TableRow>
+			<TableRow>
 				<Button
 						android:text="Group Notification 2"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" 
 						android:onClick="showGroup2"/>
-
 				<Button
 						android:text="Group Notification 3"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" 
 						android:onClick="showGroup3"/>
-
+			</TableRow>
+			<TableRow>				
 				<Button
 						android:text="summary notification"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" 
 						android:onClick="showSummaryNoti"/>
-
 				<Button
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
 						android:onClick="showPageNotification"
 						android:text="page notification" />
-				
+			</TableRow>
+			<TableRow>				
 				<Button
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
 						android:onClick="showBackgroundNotification"
 						android:text="background notification" />
-	
 				<Button
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
 						android:onClick="showContentActionNotification"
 						android:text="Content Action notification" />
+			</TableRow>
+			<TableRow>
+				<Button
+						android:onClick="showBasicReceiveNotification"
+						android:text="basic Receive Notification" />
+				<Button
+						android:onClick="showVoiceReceiveNotification"
+						android:text="Remote Input Notification" />
+			</TableRow>
+			<TableRow>
+				<Button
+						android:onClick="showChoiceReceiveNotification"
+						android:text="Choice Receive Notification" />
+				<Button
+						android:onClick="showBroadcastReceiveNotification"
+						android:text="Broadcast Receive Notification" />
+			</TableRow>				
 				
-			</LinearLayout>
+				
+				
+				
+				
+				
+			</TableLayout>
 		
 		</ScrollView>
 

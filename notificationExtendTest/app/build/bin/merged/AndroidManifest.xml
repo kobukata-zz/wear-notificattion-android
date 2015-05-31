@@ -22,6 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.nazoma.notiExtendTest.ReceiveActivity"
+            android:label="@string/title_activity_receive" >
+        </activity>
+
+        <receiver
+            android:name="com.nazoma.notiExtendTest.MainReceiver"
+            android:enabled="true"
+            android:exported="true" >
+        </receiver>
     </application>
 
 </manifest>

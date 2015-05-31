@@ -10,9 +10,9 @@ import android.text.*;
 import android.text.style.*;
 import android.view.*;
 import android.support.v4.view.*;
+import android.support.v4.app.RemoteInput;
 
-public class MainActivity extends Activity 
-{
+public class MainActivity extends Activity {
 
 		static final int BIG_TEXT_NOTIFICATION_ID = 1;
 		static final int INBOX_NOIFICATION = 2;
@@ -24,6 +24,17 @@ public class MainActivity extends Activity
 		static final int PAGE_NOTIFICATION_ID = 10;
 		static final int BACKKGROUND_NOTIFICATION_ID = 11;
 		static final int CONTENT_ACTION_NOTIFICATION_ID = 12;
+		static final int BASIC_RECEIVE_NOTIFICATION_ID = 15;
+		static final int VOICE_RECEIVE_NOTIFICATION_ID = 16;
+		static final int CHOICE_RECEIVE_NOTIFICATION_ID = 17;
+		static final int BROADCAST_RECEIVER_NOTIFICATION_ID = 18;
+		
+		static final int BASIC_RECEIVE_ACTION1_ID = 0;
+		static final int BASIC_RECEIVE_ACTION2_ID = 1;
+		static final int BASIC_RECEIVE_ACTION3_ID = 2;
+		
+		final static String EXTRA_RESULT_KEY = "extra_result_key";
+		final static String VOICE_RESULT_KEY = "voice_result_key";
 		final static String GROUP_KEY = "group_key";
 
     @Override
@@ -277,4 +288,123 @@ public class MainActivity extends Activity
 					
 				NotificationManagerCompat.from(this).notify(CONTENT_ACTION_NOTIFICATION_ID, noti);
 		}
+		
+		public void showBasicReceiveNotification (View v) {
+				Intent receiveIntent = new Intent(this, ReceiveActivity.class);
+				
+				// action 1 result text
+				receiveIntent.putExtra(EXTRA_RESULT_KEY, "Call Action Click!");
+				
+				// pending intent for action 1
+				PendingIntent viewPendingIntent1 = 
+					PendingIntent.getActivity(this, BASIC_RECEIVE_ACTION1_ID, receiveIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+				
+				// action 2 result text
+				receiveIntent.putExtra(EXTRA_RESULT_KEY, "Cut Action Click!");
+				
+				// pending intent for action 2
+				PendingIntent viewPendingIntent2 = 
+					PendingIntent.getActivity(this, BASIC_RECEIVE_ACTION2_ID, receiveIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+					
+				// action 3 result text
+				receiveIntent.putExtra(EXTRA_RESULT_KEY, "Accept Action Click!");
+				
+				// pending intent for action 3
+				PendingIntent viewPendingIntent3 = 
+						PendingIntent.getActivity(this, BASIC_RECEIVE_ACTION3_ID, receiveIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+				
+				// make a pushalarm and add actions
+				Notification noti = new NotificationCompat.Builder(this)
+					.setContentTitle("basic receive title")
+					.setContentText("basic receive text")
+					.setSmallIcon(R.drawable.ic_launcher)
+					.addAction(R.drawable.ic_launcher, "Call", viewPendingIntent1)
+					.addAction(R.drawable.ic_launcher, "Cut", viewPendingIntent2)
+					.addAction(R.drawable.ic_launcher, "Accept", viewPendingIntent3)
+					.setAutoCancel(true)
+					.build();
+					
+				NotificationManagerCompat.from(this).notify(BASIC_RECEIVE_NOTIFICATION_ID, noti);
+		}
+		
+		public void showVoiceReceiveNotification(View v) {
+				Intent remoteIntent = new Intent(this, ReceiveActivity.class);
+				remoteIntent.putExtra(EXTRA_RESULT_KEY, "Remote input Action!");
+				PendingIntent replyPendingIntent = 
+					PendingIntent.getActivity(this, 0, remoteIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+					
+				RemoteInput remoteInput = new RemoteInput.Builder(VOICE_RESULT_KEY)
+					.setLabel("reply label")
+					.build();
+				NotificationCompat.Action action = 
+					new NotificationCompat.Action.Builder(R.drawable.ic_launcher, 
+						"reply", replyPendingIntent)
+						.addRemoteInput(remoteInput)
+						.build();
+				
+				Notification noti = new NotificationCompat.Builder(this)
+					.setSmallIcon(R.drawable.ic_launcher)
+					.setContentTitle("title")
+					.setContentText("text")
+					.extend(new NotificationCompat.WearableExtender().addAction(action))
+					.build();
+					
+				NotificationManagerCompat.from(this).notify(VOICE_RECEIVE_NOTIFICATION_ID, noti);
+		}
+		
+		public void showChoiceReceiveNotification(View v) {
+				Intent remoteIntent = new Intent(this, ReceiveActivity.class);
+				remoteIntent.putExtra(EXTRA_RESULT_KEY, "Choice Remote Action!");
+				PendingIntent replyPendigIntent = 
+					PendingIntent.getActivity(this, 0, remoteIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+				
+				RemoteInput remoteInput = new RemoteInput.Builder(VOICE_RESULT_KEY)
+					.setLabel("Remote Label")
+					.setChoices(getResources().getStringArray(R.array.remote_choices))
+					.build();
+				
+				NotificationCompat.Action action = new NotificationCompat.Action.Builder(
+					R.drawable.ic_launcher, 
+					"Choice Remote Action!!",
+					replyPendigIntent)
+					.addRemoteInput(remoteInput)
+					.build();
+				
+				Notification noti = new NotificationCompat.Builder(this)
+					.setSmallIcon(R.drawable.ic_launcher)
+					.setContentText("text")
+					.setContentTitle("title")
+					.extend(new NotificationCompat.WearableExtender().addAction(action))
+					.build();
+					
+				NotificationManagerCompat.from(this).notify(CHOICE_RECEIVE_NOTIFICATION_ID, noti);
+		}
+		
+		public void showBroadcastReceiveNotification(View v) {
+				Intent intentBroadcast = new Intent(this, MainReceiver.class);
+				intentBroadcast.putExtra(EXTRA_RESULT_KEY, "Broadcast Action!!");
+				PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intentBroadcast, PendingIntent.FLAG_UPDATE_CURRENT);
+				
+				RemoteInput remoteInput = new RemoteInput.Builder(VOICE_RESULT_KEY)
+					.setLabel("remote label")
+					.setChoices(getResources().getStringArray(R.array.remote_choices))
+					.build();
+				NotificationCompat.Action action = new NotificationCompat.Action.Builder(
+					R.drawable.ic_launcher, "Broadcast Action", pendingIntent)
+					.addRemoteInput(remoteInput)
+					.build();
+					
+				Notification noti = new NotificationCompat.Builder(this)
+					.setSmallIcon(R.drawable.ic_launcher)
+					.setContentText("text")
+					.setContentTitle("title")
+					.extend(new NotificationCompat.WearableExtender().addAction(action))
+					.build();
+					
+				NotificationManagerCompat.from(this).notify(BROADCAST_RECEIVER_NOTIFICATION_ID, noti);
+		}
+		
+		
+		
+		
 }
