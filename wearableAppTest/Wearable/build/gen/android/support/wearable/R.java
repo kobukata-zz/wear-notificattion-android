@@ -276,6 +276,10 @@ containing a value of this type.
     }
     public static final class dimen {
         public static final int card_content_padding_rect_top=0x7f060000;
+        public static final int circle_border_normal_width=0x7f060003;
+        public static final int circle_padding=0x7f060004;
+        public static final int circle_radius=0x7f060005;
+        public static final int circle_radius_pressed=0x7f060006;
         public static final int close_button_diameter=0x7f060001;
         public static final int dismiss_padding=0x7f060002;
     }
@@ -367,22 +371,24 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020054;
     }
     public static final class id {
-        public static final int action_error=0x7f050009;
-        public static final int action_success=0x7f05000b;
+        public static final int action_error=0x7f05000b;
+        public static final int action_success=0x7f05000d;
         public static final int all=0x7f050004;
-        public static final int animation=0x7f05000c;
+        public static final int animation=0x7f05000e;
         public static final int bottom=0x7f050003;
         public static final int center=0x7f050007;
         public static final int center_horizontal=0x7f050006;
         public static final int center_vertical=0x7f050005;
-        public static final int dismiss_overlay_button=0x7f05000f;
-        public static final int dismiss_overlay_explain=0x7f05000e;
-        public static final int error_message=0x7f05000a;
+        public static final int deleyed_confirmation=0x7f050009;
+        public static final int dismiss_overlay=0x7f05000a;
+        public static final int dismiss_overlay_button=0x7f050011;
+        public static final int dismiss_overlay_explain=0x7f050010;
+        public static final int error_message=0x7f05000c;
         public static final int left=0x7f050000;
-        public static final int message=0x7f05000d;
+        public static final int message=0x7f05000f;
         public static final int right=0x7f050002;
-        public static final int text=0x7f050010;
-        public static final int title=0x7f050011;
+        public static final int text=0x7f050012;
+        public static final int title=0x7f050013;
         public static final int top=0x7f050001;
         public static final int watch_view_stub=0x7f050008;
     }
@@ -396,13 +402,15 @@ containing a value of this type.
     }
     public static final class string {
         public static final int app_name=0x7f080000;
-        public static final int welcome_message=0x7f080001;
+        public static final int welcome_message_round=0x7f080001;
+        public static final int welcome_message_shape=0x7f080002;
     }
     public static final class style {
         public static final int CardText=0x7f070000;
         public static final int CardTitle=0x7f070001;
         public static final int DismissOverlayText=0x7f070002;
         public static final int DotsPageIndicatorStyle=0x7f070003;
+        public static final int NoSwipeToDismissTheme=0x7f07000f;
         public static final int TextAppearance_Wearable_Large=0x7f070004;
         public static final int TextAppearance_Wearable_Medium=0x7f070005;
         public static final int TextAppearance_Wearable_Small=0x7f070006;
